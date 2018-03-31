@@ -30,7 +30,7 @@ function onPageLoad() {
 // function for determining the randomly selected word from the array and pulling out the letters
 
 function newWord() {
-  var words = ['acai', 'apples', 'apricots', 'avocado', 'ackee', 'bananas', 'blueberries', 'blackberries', 'cantaloupes', 'cherries', 'cranberries', 'currants', 'dates', 'elderberries', 'figs', 'gooseberries', 'grapefruit', 'kiwis', 'lemons', 'mangos', 'mulberries', 'grapes', 'grapefruits', 'honeydew melons', 'oranges', 'papaya', 'pineapples', 'raspberries', 'peaches'acai'acai', 'apples', 'apricots', 'avocado', 'ackee', 'bananas', 'blueberries', 'blackberries', 'cantaloupes', 'cherries', 'cranberries', 'currants', 'dates', 'elderberries', 'figs', 'gooseberries', 'grapefruit', 'kiwis', 'lemons', 'mangos', 'mulberries', 'grapes', 'grapefruits', 'honeydew melons', 'oranges', 'papaya', 'pineapples', 'raspberries', 'peaches'];
+  var words = ['acai', 'apples', 'apricots', 'avocado', 'ackee', 'bananas', 'blueberries', 'blackberries', 'cantaloupes', 'cherries', 'cranberries', 'currants', 'dates', 'elderberries', 'figs', 'gooseberries', 'grapefruit', 'kiwis', 'lemons', 'mangos', 'mulberries', 'grapes', 'grapefruits', 'honeydew melons', 'oranges', 'papaya', 'pineapples', 'raspberries', 'peaches'];
   currentWord = words[Math.floor(Math.random() * words.length)];
   return currentWord;
 }
