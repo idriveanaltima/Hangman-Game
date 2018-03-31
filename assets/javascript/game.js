@@ -52,6 +52,7 @@ function reset() {
 
 // function for determining the sequence of events when a user enters a letter
 
+document.onkeypress = function (start) {
 
 document.onkeyup = function (event) {
   userGuess = event.key;
@@ -108,3 +109,5 @@ document.onkeyup = function (event) {
 //will call this function to load the page.
 
 document.querySelector("#word").innerHTML = onPageLoad();
+
+}
