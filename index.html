@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Hangman
-  </title>
+  <title>Hangman</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
   crossorigin="anonymous">
@@ -13,27 +12,35 @@
   
 </head>
 <body>
-  <header class="navbar navbar-default">
+    <div class="jumbotron" style="opacity: 0">
+        <div class="row">
+            <div class="col-md-12">
+              </div>
+        </div>
+    </div>
 
-  </header>
-  <div class="container well-lg">
+  <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <h1>Instructions</h1>
               <ol>
                <li>Guess a letter</li>
                <li>Choose Carefully</li>
                <li>Celebrate when you win</li>
               </ol> 
-      
-            </div>
-      <div class="col-md-4 game">
+ </div>
+
+      <div class="col-md-6 game">
        <p>Current Word</p>
        <p id="word"></p>
-       <p> Guesses Remaining</p>
+       <p>Guesses Remaining</p>
        <p id="guessesLeft"></p>
-       <p> Letters Used</p>
+       <p>Letters Used</p>
        <p id="lettersUsed"></p>
+       <p>Wins</p>
+       <p id="wins"></p>
+       <p> Losses</p>
+       <p id="losses"></p>
       </div>
 
     </div>

@@ -1,113 +1,102 @@
 
-// Declaring variables for the hangman game
+// Declaring variables for the game
 
-
-var words = ["Apple", "Orange", "Banana", "Cherry"];
 var userGuess;
 var lettersGuessed = [];
-var lettersInWord = [];
+var lettersInWord = []
 var currentWord = newWord();
 var guessesRemaining = currentWord.length * 2;
-var letterValidation = /a-z/;
+var lettersMatched = 0;
+var wins = 0;
+var losses = 0;
 
 // FUNCTIONS SECTION
 // ______________________
 
+// this function will take in a number to add the correct number of _'s for the hangman word
+
+function start () {
+  for(i=0;i < currentWord.length;i++) {
+    lettersInWord[i] = "_";
+  }
+  y = lettersInWord.join(" ")
+  document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
+  document.querySelector("#wins").innerHTML = wins;
+  document.querySelector("#losses").innerHTML = losses;
+  document.querySelector("#word").innerHTML = y;
+  return y;
+}
+
+
 // function for determining the randomly selected word from the array and pulling out the letters
 
 function newWord() {
+var words = ["apple", "orange", "banana", "cherry"];
 currentWord = words[Math.floor(Math.random() * words.length)];
 return currentWord;
 }
+console.log(currentWord);
 
-// The number or characters in the word will tell me how many elements to create
-
-var characters = function (word) {
-  return word.length;
+function reset () {
+  newWord();
+  document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
 }
 
-// this function will take in a number to add the correct number of _'s for the hangman word
-
-
-function underscore (num) {
-  return x = "_ ".repeat(num);
-}
-
-console.log(underscore(characters(currentWord)));
-
-// Validate letters are 
-
-// function letterVal (letter) {
-//   if  (letter === userGuess) {
-//      return
-//   } else {
-//     alert("Please enter a letter!")
-//   }
-// }
-
-// For loop that identifies each letter of the randomly generated word from the words array.  REMOVE
-
-      for (i=0; i < currentWord.length; i++) {
-      lettersInWord.push(currentWord[i]);
-  }
-
- console.log(currentWord);
-
-
-// Is this a way to dynamically created elements
-
-// function dynamicLetters (){
-// let p = document.createElement('p');
-// p.className = "gameLetter";
-// p.innerHTML = userGuess;
-// document.body.appendChild(p);
-//  }
-
-//  console.log(dynamicLetters(characters(selectedWord)));
+// function for determining the sequence of events when a user enters a letter
 
 
 document.onkeyup = function(event) {
   userGuess = event.key;
-  letterVal(userGuess);
-  lettersGuessed.push(userGuess);
   
-  
-   // for loop that compares letters in word to the users guess
-  
+//will validate the letter to see if it was a valid letter and validate whether a letter has already been pressed.
 
+ if (/^[a-z]/.test(userGuess) === true) {
+      lettersGuessed.push(userGuess);
+      document.querySelector("#lettersUsed").innerHTML = lettersGuessed;
+    }else {
+      return
+}
+
+if (currentWord.indexOf(userGuess) > -1) {
+  console.log(currentWord.indexOf(userGuess));
   for (i=0; i < currentWord.length; i++) {
-    if (currentWord[i] == userGuess) {
-    console.log("It's a match");
-  } else { 
-    guessesRemaining--;
-    document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
-    return;
-    console.log("not a match");
+   if (currentWord[i] == userGuess) {
+    console.log(currentWord.indexOf(userGuess));
+          lettersMatched++;
+          console.log(lettersMatched);
+          lettersInWord[i] = userGuess;
+          console.log(lettersInWord[i]);
+          document.querySelector("#word").innerHTML = lettersInWord.join(" ");
+      }
+    }
+  } else {
+  console.log(currentWord.indexOf(userGuess))
+   guessesRemaining--;
+   document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
+ }
+
+ 
+
+if (lettersMatched === currentWord.length){
+    wins++;
+    document.querySelector("#wins").innerHTML = wins;
+    console.log("game over");
+    reset ();
+    } else {
+      return;
+    }
+    
+if (guessesRemaining === 0){
+      losses++;
+      document.querySelector("#losses").innerHTML = losses;
+    } else {
+        return;
+      }
   }
 
-}
 
-// if user guess is already made then do nothing 
-// else if userguess is the same as a letter in the word then print the letter
-// else if userguess doesn't match any letter in the word then print the letter and reduced guesses remaining by 1
 
-console.log(lettersGuessed);
-console.log(guessesRemaining);
-document.querySelector("#lettersUsed").innerHTML = lettersGuessed;
 
-}
+document.querySelector("#word").innerHTML = start();
 
-document.querySelector("#word").innerHTML = underscore(characters(currentWord));
-document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
 
-// REMOVE
-
-// var html =
-//           "<p>You chose: " + userGuess + "</p>" +
-//           "<p>The computer chose: " + computerGuess + "</p>" +
-//           "<p>wins: " + wins + "</p>" +
-//           "<p>losses: " + losses + "</p>" +
-//           "<p>ties: " + ties + "</p>";
-
-//         // Set the inner HTML contents of the #game div to our html string
-//         document.querySelector("#game").innerHTML = html;
