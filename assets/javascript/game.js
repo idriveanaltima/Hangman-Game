@@ -61,14 +61,10 @@ document.onkeyup = function (event) {
   //will validate the letter to see if it was a valid entry before storing in the list
 
 
-  if (/^[a-z]/.test(userGuess) === true) {
+  if (lettersGuessed.indexOf(userGuess) === -1 && /^[a-z]/g.test(userGuess) === true ) {
     lettersGuessed.push(userGuess);
     document.querySelector("#lettersUsed").innerHTML = lettersGuessed;
-  } else {
-};
-
-//matching the guessed letters to the word or reducing # ofguesses if incorrect
-  if (currentWord.indexOf(userGuess) > -1) {
+     if (currentWord.indexOf(userGuess) > -1) {
     for (i = 0; i < currentWord.length; i++) {
       if (currentWord[i] == userGuess) {
         lettersMatched++;
@@ -80,6 +76,11 @@ document.onkeyup = function (event) {
     guessesRemaining--;
     document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
   };
+  } else {
+};
+
+//matching the guessed letters to the word or reducing # ofguesses if incorrect
+ 
 
   //if the word is complete then add to wins and reset the game
 
