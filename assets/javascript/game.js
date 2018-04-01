@@ -50,9 +50,11 @@ function reset() {
   document.querySelector("#lettersUsed").innerHTML = lettersGuessed;
 }
 
-// function for determining the sequence of events when a user enters a letter
+// starts the game when any key is entered
 
 document.onkeypress = function (start) {
+
+// captures the letters pressed
 
 document.onkeyup = function (event) {
   userGuess = event.key;
@@ -79,8 +81,6 @@ document.onkeyup = function (event) {
   };
   } else {
 };
-
-//matching the guessed letters to the word or reducing # ofguesses if incorrect
  
 
   //if the word is complete then add to wins and reset the game
@@ -106,7 +106,7 @@ document.onkeyup = function (event) {
 
 
 
-//will call this function to load the page.
+//will call this function to start the game.
 
 document.querySelector("#word").innerHTML = onPageLoad();
 
