@@ -50,9 +50,6 @@ function reset() {
   document.querySelector("#lettersUsed").innerHTML = lettersGuessed;
 }
 
-// starts the game when any key is entered
-
-document.onkeypress = function (start) {
 
 // captures the letters pressed
 
@@ -78,7 +75,7 @@ document.onkeyup = function (event) {
   } else {
     guessesRemaining--;
     document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
-  };
+  }
   } else {
 };
  
@@ -110,4 +107,3 @@ document.onkeyup = function (event) {
 
 document.querySelector("#word").innerHTML = onPageLoad();
 
-}
