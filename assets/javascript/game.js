@@ -7,19 +7,22 @@ var currentWord = newWord();
 var guessesRemaining = currentWord.length;
 var lettersMatched = 0;
 var wins = 0;
+var losses = 0;
 
 // FUNCTIONS SECTION
 // ______________________
 
 // this function will take in a number to add the correct number of _'s for the hangman word and initalize values
 
-function onPageLoad() {
+function start() {
   for (i = 0; i < currentWord.length; i++) {
     lettersInWord[i] = "_";
   }
   y = lettersInWord.join(" ")
   document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
   document.querySelector("#wins").innerHTML = wins;
+  document.querySelector("#losses").innerHTML = losses;
+  document.querySelector("#lettersUsed").innerHTML = lettersGuessed;
   document.querySelector("#word").innerHTML = y;
   return y;
 }
@@ -36,30 +39,20 @@ function newWord() {
 // function for resetting the game when a player wins or is out of guesses
 
 function reset() {
-  newWord(currentWord);
+  lettersInWord = [];
   lettersMatched = 0;
   lettersGuessed = [];
+  newWord(currentWord);
   guessesRemaining = currentWord.length;
-  lettersInWord = [];
-  for (i = 0; i < currentWord.length; i++) {
-    lettersInWord[i] = "_";
-  }
-  y = lettersInWord.join(" ")
-  document.querySelector("#word").innerHTML = y;
-  document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
-  document.querySelector("#lettersUsed").innerHTML = lettersGuessed;
-}
+  start();
+};
 
 
 // captures the letters pressed
 
 document.onkeyup = function (event) {
   userGuess = event.key;
-
-
-
   //will validate the letter to see if it was a valid entry before storing in the list
-
 
   if (lettersGuessed.indexOf(userGuess) === -1 && /^[a-z]/g.test(userGuess) === true ) {
     lettersGuessed.push(userGuess);
@@ -76,28 +69,21 @@ document.onkeyup = function (event) {
     guessesRemaining--;
     document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
   }
-  } else {
-};
+  };
  
 
   //if the word is complete then add to wins and reset the game
-
-  if (lettersMatched === currentWord.length) {
-    wins++;
-    document.querySelector("#wins").innerHTML = wins;
-    reset();
-  } else {
-
-  };
-
   //if there are no more guesses then reset the game
 
   if (guessesRemaining === 0) {
+    losses++;
+    document.querySelector("#losses").innerHTML = losses;
     reset()
-  } else {
-
+  } else if (lettersMatched === currentWord.length) {
+    wins++;
+    document.querySelector("#wins").innerHTML = wins;
+    reset();
   };
-
 };
 
 
@@ -105,5 +91,5 @@ document.onkeyup = function (event) {
 
 //will call this function to start the game.
 
-document.querySelector("#word").innerHTML = onPageLoad();
+document.querySelector("#word").innerHTML = start();
 

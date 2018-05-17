@@ -14,45 +14,65 @@
 </head>
 
 <!-- main header -->
+
 <body>
   <div class="jumbotron">
     <div class="container">
-      <div class="row justify-content-md-center">
-        <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-2">
+          <!-- <img class="img img-thumbnail" src="assets/images/grapes.jpeg" alt="grapes"> -->
+          <img class="img img-thumbnail" src="assets/images/fruitbasket.jpeg" alt="fruit basket">
+          <!-- <img class="img img-thumbnail" src="assets/images/hanginggrapes.jpeg" alt="grapes"> -->
+          <!-- <img class="img img-thumbnail" src="assets/images/purplehanginggrapes.jpeg" alt="grapes"> -->
+        </div>
+        <div class="col justify-content-md-center">
           <h1 class="display-3">Hangman</h1>
-          <h3></h3>
+          <hr>
+        </div>
+        <div class="col-md-2">
+          <!-- <img class="img img-thumbnail" src="assets/images/grapes.jpeg" alt="grapes"> -->
+          <img class="img img-thumbnail" src="assets/images/fruitbasket.jpeg" alt="fruit basket">
+          <!-- <img class="img img-thumbnail" src="assets/images/hanginggrapes.jpeg" alt="grapes"> -->
+          <!-- <img class="img img-thumbnail" src="assets/images/purplehanginggrapes.jpeg" alt="grapes"> -->
         </div>
       </div>
     </div>
-  </div>
 
-<!-- container with instructions -->
 
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-md-4">
-        <h1>Instructions</h1>
-        <ol>
-          <li>Press any key to begin the game</li>
-          <li>Guess a letter</li>
-          <li>Celebrate when you win!</li>
-        </ol>
+    <!-- container with instructions -->
+
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col">
+          <h1>Instructions</h1>
+          <ol>
+            <li>Press any key to begin the game</li>
+            <li>Guess a letter</li>
+            <li>Celebrate when you win!</li>
+          </ol>
+        </div>
+
+        <!-- has all the hangman info -->
+
+        <div class="col">
+          <p>Current Word</p>
+          <p id="word"></p>
+          <p>Guesses Remaining</p>
+          <p id="guessesLeft"></p>
+          <p>Letters Used</p>
+          <p id="lettersUsed"></p>
+
+        </div>
+        <div class="col">
+          <p>Wins</p>
+          <p id="wins"></p>
+          <p>Losses</p>
+          <p id="losses"></p>
+        </div>
+
       </div>
-
-<!-- has all the hangman info -->
-
-      <div class="col-md-4">
-        <p>Current Word</p>
-        <p id="word"></p>
-        <p>Guesses Remaining</p>
-        <p id="guessesLeft"></p>
-        <p>Letters Used</p>
-        <p id="lettersUsed"></p>
-        <p>Wins</p>
-        <p id="wins"></p>
-      </div>
-
     </div>
+
   </div>
 
 </body>
@@ -61,4 +81,3 @@
 </script>
 
 </html>
-
