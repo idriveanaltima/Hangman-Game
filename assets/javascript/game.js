@@ -1,39 +1,40 @@
 // Declaring variables for the game
 
-var userGuess;
-var lettersGuessed = [];
-var lettersInWord = [];
-var currentWord = newWord();
-var guessesRemaining = currentWord.length;
-var lettersMatched = 0;
-var wins = 0;
-var losses = 0;
+let userGuess;
+let lettersGuessed = [];
+let lettersInWord = [];
+var currentWord;
+let guessesRemaining;
+let lettersMatched = 0;
+let wins = 0;
+let losses = 0;
+var words = ['acai', 'apples', 'apricots', 'avocado', 'ackee', 'bananas', 'blueberries', 'blackberries', 'cantaloupes', 'cherries', 'cranberries', 'currants', 'dates', 'elderberries', 'figs', 'gooseberries', 'grapefruit', 'kiwis', 'lemons', 'mangos', 'mulberries', 'grapes', 'grapefruits', 'oranges', 'papaya', 'pineapples', 'raspberries', 'peaches'];
 
 // FUNCTIONS SECTION
 // ______________________
 
 // this function will take in a number to add the correct number of _'s for the hangman word and initalize values
 
-function start() {
-  for (i = 0; i < currentWord.length; i++) {
-    lettersInWord[i] = "_";
-  }
-  y = lettersInWord.join(" ")
-  document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
-  document.querySelector("#wins").innerHTML = wins;
-  document.querySelector("#losses").innerHTML = losses;
-  document.querySelector("#lettersUsed").innerHTML = lettersGuessed;
-  document.querySelector("#word").innerHTML = y;
-  return y;
-}
+function startGame() {
+  
+  newWord();
+  guessesRemaining = currentWord.length;
 
+    for (i = 0; i < currentWord.length; i++) {
+      lettersInWord[i] = "_";
+    }
+      let completeWord = lettersInWord.join(" ")
+      document.querySelector("#guessesLeft").innerHTML = guessesRemaining;
+      document.querySelector("#wins").innerHTML = wins;
+      document.querySelector("#losses").innerHTML = losses;
+      document.querySelector("#lettersUsed").innerHTML = lettersGuessed;
+      document.querySelector("#word").innerHTML = completeWord;
+  }
 
 // function for determining the randomly selected word from the array
 
 function newWord() {
-  var words = ['acai', 'apples', 'apricots', 'avocado', 'ackee', 'bananas', 'blueberries', 'blackberries', 'cantaloupes', 'cherries', 'cranberries', 'currants', 'dates', 'elderberries', 'figs', 'gooseberries', 'grapefruit', 'kiwis', 'lemons', 'mangos', 'mulberries', 'grapes', 'grapefruits', 'oranges', 'papaya', 'pineapples', 'raspberries', 'peaches'];
-  currentWord = words[Math.floor(Math.random() * words.length)];
-  return currentWord;
+  return currentWord = words[Math.floor(Math.random() * words.length)];
 }
 
 // function for resetting the game when a player wins or is out of guesses
@@ -42,9 +43,7 @@ function reset() {
   lettersInWord = [];
   lettersMatched = 0;
   lettersGuessed = [];
-  newWord(currentWord);
-  guessesRemaining = currentWord.length;
-  start();
+  startGame();
 };
 
 
@@ -87,9 +86,7 @@ document.onkeyup = function (event) {
 };
 
 
-
-
 //will call this function to start the game.
 
-document.querySelector("#word").innerHTML = start();
+startGame();
 
